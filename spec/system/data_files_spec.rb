@@ -11,13 +11,13 @@ RSpec.describe "DataFiles", type: :system do
       expect(page).to have_content('Upload CSV File')
     end
   end
-  # context 'when submitting a file' do
-  #   it 'redirects the user to the root' do
-  #     visit '/'
-  #     attach_file("Upload Your File", "#{Rails.root}/test/fixtures/files/example_input.tsv")
-  #     click_on 'Upload CSV'
+  context 'when submitting a file' do
+    it 'redirects the user to the root' do
+      visit '/'
+      attach_file("Upload Your File", "#{Rails.root}/test/fixtures/files/example_input.tsv")
+      click_on 'Upload CSV'
       
-  #     expect(current_path).to eq('/') 
-  #   end
-  # end
+      expect(current_path).to eq('/') 
+    end
+  end
 end
