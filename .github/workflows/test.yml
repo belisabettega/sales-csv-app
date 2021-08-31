@@ -3,7 +3,7 @@ name: Test
 on: [push]
 
 jobs:
-  rspec:
+  test:
     env:
       RAILS_ENV: test
       NODE_ENV: test
@@ -11,21 +11,22 @@ jobs:
     services:
       postgres:
         image: postgres
-      env:
-        POSTGRES_PASSWORD: postgres
-      ports:
-        - 5432:5432
-      options: >-
-        --health-cmd pg_isready
-        --health-interval 10s
-        --health-timeout 5s
-        --health-retries 5
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout repository # copies repo in runner
+        uses: actions/checkout@v2 # short for https://github.com/actions/checkout
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@v1 # short for https://github.com/ruby/setup-ruby
         with:
+          # runs 'bundle install' and caches installed gems automatically
           bundler-cache: true
       - name: Set up Node
         uses: actions/setup-node@v2
