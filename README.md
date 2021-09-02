@@ -1,4 +1,4 @@
-# Test web 1
+# Sales CSV App
 This application allows the user to upload TAB-separated files with company sales data and returns the total gross income of the sales data after each file upload, while also showing the total all-time gross income. The data uploaded is saved and organized in a relational database.
 
 ## Getting started
