@@ -1,10 +1,35 @@
-<%= form_for(@data_file) do |f| %>
-   <div class="form-group">
-      <%= f.label :file, "Upload CSV File" %>
-      <%= f.file_field :file, class: 'form-control-file', placeholder: 'Upload Your File', required: true %>
+<div class="banner">
+   <div>
+      <h1>Sales control App</h1>
+      <p class="text-center">Your app to see the income grow!</p>
    </div>
-   <%= f.submit "Upload CSV", class: 'btn btn-primary' %>
-<% end %>
+</div>
+<div class="container">
+   <div class="row">
+      <div class="col-sm-12 col-md-6 small-font my-5 text-center">
+         <h1>Curious about how much you got this month?</h1>
+         <p>Submit a tab-separated file here and find out!</p>
+         <%= form_for(@data_file, html: { class: "grid" }) do |f| %>
+            <div class="form-group">
+               <%= f.file_field :file, class: 'form-control-file', placeholder: 'Upload Your File', required: true %>
+            </div>
+            <%= f.submit "Sum up!", class: 'btn btn-outline-secondary' %>
+         <% end %>
+      </div>
+      <div class="col-sm-12 col-md-6 small-font my-5 text-center">
+         <p>Last file uploaded income: <%= @last_file_income  %></p>
+         <p>All-time gross income: <%= @all_income %></p>
+      </div>
+   </div>
+</div>
+<div class="footer">
+   <div class="footer-links">
+      <a href="https://github.com/belisabettega"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/belisa-bettega-3a800a187/"><i class="fab fa-linkedin"></i></a>
+   </div>
+   <div class="footer-copyright">
+      Call me, maybe? <i class="fas fa-heart"></i>
+   </div>
+</div>
 
-<h1>Last file uploaded income: <%= @last_file_income %></h1>
-<h1>All-time gross income: <%= @all_income %></h1>
+

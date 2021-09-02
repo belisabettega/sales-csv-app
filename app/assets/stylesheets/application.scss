@@ -1,1 +1,58 @@
 @import "bootstrap/scss/bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.banner {
+  background-image: linear-gradient(rgba(155, 124, 124, 0.4),rgba(97, 73, 73, 0.4)), asset-url('nuuvem.jpg');
+  background-position: bottom;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Raleway', Sans-Serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-size: 40px;
+  }
+}
+
+.small-font{
+  font-family: 'Open Sans', Sans-Serif;
+  font-size: 15px;
+}
+
+.grid{
+  display: grid;
+}
+
+.footer {
+  background: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
+}
+
+h1{
+  font-size: 22px;
+}
