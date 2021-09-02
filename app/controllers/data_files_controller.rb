@@ -12,7 +12,7 @@ class DataFilesController < ApplicationController
     import(params[:data_file][:file], data_file)
     redirect_to root_path
   end
- 
+
   private
 
   def calculate_income
@@ -24,7 +24,7 @@ class DataFilesController < ApplicationController
   end
 
   def import(file, instance_of_file_obj)
-    CSV.foreach(file, headers: :first_row, :col_sep => "\t") do |row|
+    CSV.foreach(file, headers: :first_row, col_sep: "\t") do |row|
       purchase = generate_purchase_and_model_entities(row, instance_of_file_obj)
       instance_of_file_obj.income += (purchase.product.price * purchase.product_quantity)
       instance_of_file_obj.save
@@ -32,10 +32,11 @@ class DataFilesController < ApplicationController
   end
 
   def generate_purchase_and_model_entities(row, instance_of_file_obj)
-    merchant = Merchant.find_or_create_by(name: row["merchant name"], address: row["merchant address"])
-    purchaser = Purchaser.find_or_create_by(name: row["purchaser name"])
-    product = Product.find_or_create_by(description: row["item description"], price: row["item price"])
-    product_quantity = row["purchase count"]
-    Purchase.create(merchant: merchant, data_file: instance_of_file_obj, purchaser: purchaser, product_quantity: product_quantity, product: product)
+    merchant = Merchant.find_or_create_by(name: row['merchant name'], address: row['merchant address'])
+    purchaser = Purchaser.find_or_create_by(name: row['purchaser name'])
+    product = Product.find_or_create_by(description: row['item description'], price: row['item price'])
+    product_quantity = row['purchase count']
+    Purchase.create(merchant: merchant, data_file: instance_of_file_obj, purchaser: purchaser,
+                    product_quantity: product_quantity, product: product)
   end
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   context 'when creating a product' do
     it 'validates the presence of a description' do
-      record = Product.new(description: "Description here")
+      record = Product.new(description: 'Description here')
       record.validate
       expect(record.errors[:price]).to include("can't be blank")
     end
